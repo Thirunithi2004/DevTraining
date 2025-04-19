@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>game</title>
+    <style>
+        h1{
+            text-transform: uppercase;
+        }
+        h3{
+            text-transform: capitalize;
+            opacity: 0.5;
+        }
+        div{
+            text-align: center;
+            border: 2px dashed;
+            width: 500px;
+            height: 300px;
+        }
+       p{
+       
+        border: 2px solid;
+        width: 150px;
+        
+       }
+       
+        
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+            <h1>guess the number</h1>
+            <input id="inputno">
+            <button onclick="check()">check</button>
+            <h3 id="rw">your right or wrong!!!</h3>
+            <sapn> 
+               <center id="totscore"><p>score:10</p></center> 
+                
+            </sapn>
+           
+            
+        </div>
+        <script>
+            var inputno=document.getElementById("inputno")
+            var crt=document.getElementById("rw")
+            var totscore=document.getElementById("totscore") 
+            var element=Math.floor(Math.random()*10)+1
+            score=10
+
+            function check()
+            {
+               var enter=inputno.value 
+               if(enter==element) 
+               {
+                crt.textContent="Your Right"
+                alert("you won")
+               }
+               if(enter=="") 
+               {
+                crt.textContent="enter the value "
+               }
+
+               else
+               {
+                crt.textContent="Your Wrong"
+                alert("you lose")
+                score=score-1
+                totscore.textContent="score:"+score
+               }
+
+            }
+      </script>
+    </center>
+   
+
+</body>
+</html>
