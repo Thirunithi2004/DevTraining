@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html >
+<head>
+    
+    <title>js</title>
+    <style>
+
+    #bor{
+        margin: 20%;
+        border: 3px solid rgb(45, 3, 3);
+        border-radius: 30px;
+        width: 50%;
+    }
+    h1{
+        padding-bottom: 40px;
+    }
+    #num1,#num2,#num3,#num4,#num5,#num6{
+        background-color: rgb(155, 174, 211);
+        
+    }
+    input{
+        width: 200px;
+        height: 30px;
+        color:rgb(168, 46, 46);
+        font-weight: bold;
+    }
+    button{
+        width: 50px;
+        height: 30px;
+        background-color: rgb(5, 23, 23);
+    }
+    p{
+       
+        border: 3px solid;
+        width: 100px;
+        height: 30px;
+        display: flex;
+        justify-content:space-evenly;
+        background-color: aquamarine;
+    }
+    
+    </style>
+</head>
+<body id="bor" style="text-align: center;">
+    <h1>CALCULATOR</h1>
+    <input id="num1"><sapn>+</sapn>
+    <input id="num2">
+    <button onclick="add()">add</button>
+    <center><p id="result1">result</p></center>
+    <input id="num3"><sapn>-</sapn>
+    <input id="num4">
+    <button onclick="sub()">sub</button>
+    <center><p id="result2">result</p></center>
+    <input id="num5"><sapn>*</sapn>
+    <input id="num6">
+    <button onclick="mul()">mul</button>
+    <center><p id="result3">result</p></center>
+    <script>
+        var box1=document.getElementById("num1")
+        var box2=document.getElementById("num2")
+
+        var box3=document.getElementById("num3")
+        var box4=document.getElementById("num4")
+
+        var box5=document.getElementById("num5")
+        var box6=document.getElementById("num6")
+       
+        
+
+        var result1=document.getElementById("result1")
+
+        var result2=document.getElementById("result2")
+
+        var result3=document.getElementById("result3")
+       
+
+        
+      
+       function add()
+        {
+            var box1value=Number(box1.value)
+            var box2value=Number(box2.value)
+            var total1=box1value+box2value
+            result1.textContent=total1
+        }
+        function sub()
+        {
+            var box3value=Number(box3.value)
+            var box4value=Number(box4.value)
+            var total2=box3value-box4value
+            result2.textContent=total2
+        }
+        function mul()
+        {
+            var box5value=Number(box5.value)
+            var box6value=Number(box6.value)
+            var total3=box5value*box6value
+            result3.textContent=total3
+        }
+    </script>
+
+</body>
+</html>

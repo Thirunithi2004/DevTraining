@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FORM</title>
+    <style>
+        form{
+            padding: 50px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    
+   <center>
+    <h1 id="baby">JOB APPLICATION</h1>
+    <button onclick="chance()">
+        click
+    </button>
+    <hr>
+    <form action="#">
+        <table cellpadding="10" cellspacing="1">
+            <legend>YOUR DETAILS</legend>
+            <!-- full name -->
+             <tr>
+    
+                <td><label FOR="NAME">FULL NAME</label></td>
+                <td><input type="NAME" id="NAME"></td>
+            </tr>
+            <!-- email -->
+            <tr>
+    
+                <td><label FOR="mail">EMAIL</label></td>
+                <td colspan="2"><input type="email" id="mail"></td>
+            </tr>
+            <!-- phone number -->
+            <tr>
+    
+                <td><label FOR="mobile">MOBILE</label></td>
+                <td><input type="number" id="mobile"></td>
+            </tr>
+            <!-- gender -->
+            <tr>
+                <td><label for="gen">GENDER</label></td>
+                <td><select id="gen">
+                    <option value="m"></option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="others">others</option> 
+                </td>
+    
+            </tr>
+            <!-- DATE OF BIRTH -->
+            <tr>
+    
+                <td><label FOR="DOB">DATE OF BIRTH</label></td>
+                <td><input type="date" id="DOB"></td>
+            </tr>
+            <!-- address -->
+            <tr>
+    
+                <td><label FOR="add">ADDRESS</label></td>
+                <td><input type="address" id="add"></td>
+            </tr>
+            <!-- education details -->
+             <tr>
+                <td><label for="INS">INSTITUDE NAME</label></td>
+                <td><INPUT type="text" id="INS"></td>
+             </tr>
+             <tr>
+    
+                <td><label FOR="c_name">DEGREE</label></td>
+                <td><select id="c_name">
+                    <option value="0"></option>
+                    <option value="1">BE</option>
+                    <option value="2">BCOM</option>
+                    <option value="3">B.TECH</option>
+                    <option value="4">MCA</option>
+                    <option value="5">PHD</option>
+                    <option value="6">BSC</option>
+                    <option value="7">BCE</option>
+                    <option value="8">B.EN</option></td>
+            </tr>
+            <tr>
+                <td><label for="gra">GRADUATION YEAR</label></td>
+                <td><INPUT type="date" id="gra"></td>
+             </tr>
+
+             <!-- WPRK EXPERIENCE -->
+
+             <tr>
+                <td><label for="com">COMPANY NAME</label></td>
+                <td><INPUT type="text" id="com"></td>
+             </tr>
+
+             <tr>
+                <td><label for="job">JOB TITLE</label></td>
+                <td><INPUT type="text" id="job"></td>
+             </tr>
+
+             <tr>
+                <td><label for="s_date">START DATE</label></td>
+                <td><INPUT type="date" id="s_date"></td>
+             </tr>
+
+            <!-- job role -->
+            <tr>
+    
+                <td><label FOR="job">JOB POSITION</label></td>
+                <td><select  id="job">
+                    <option value="w"></option>
+                    <option value="web"> web developer</option>
+                    <option value="cyber">Cybersecurity</option>
+                    <option value="iot">IoT engineer</option>  
+                    <option value="3d ">3D animation</option>  
+                    <option value="data">Data analyzed</option>    
+                </td> 
+    
+            </tr>
+            <!-- upload resume -->
+            <tr>
+    
+                <td><label FOR="resume">UPLOAD RESUME(PDF/JPG)</label></td>
+                <td><input type="file" id="resume"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="center"><input type="submit"></td>
+                
+            </tr>
+        
+    
+        </table>
+    </form>
+</center>
+ <script>
+    var para=document.getElementById("baby")
+    console.log(para.textContent)
+    function chance()
+    {
+        para.textContent="best job"
+    }
+    
+    </script> 
+</body>
+</html>
