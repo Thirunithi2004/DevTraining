@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_02</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        height: 100%;
+    }
+
+    #form {
+        border: 5px solid blue;
+        width: 600px;
+        height: auto;
+        margin: auto;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 20px 20px 15px rgb(10, 10, 34);
+        border-radius: 40px;
+        background-color: rgb(236, 236, 218);
+        box-sizing: border-box;
+    }
+
+    .new {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* form .new:last-child{
+            display: block  ;
+        } */
+
+
+    label {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        height: 20px;
+        border: 3px solid rgb(3, 3, 10);
+        box-shadow: 1px 1px 2px rgb(20, 20, 27);
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        border-radius: 30px;
+        width: 150px;
+        height: 25px;
+        color: azure;
+        background-color: rgb(26, 36, 226);
+        font-weight: bold;
+
+    }
+
+
+    #int {
+        display: flex;
+        justify-content: center;
+        /* padding-right: 30px; */
+        /* gap: 30px; */
+    }
+
+    h1 {
+        text-align: center;
+        opacity: 0.5;
+        color: rgb(16, 16, 18);
+    }
+
+    #success {
+        font-weight: bolder;
+        text-transform: uppercase;
+        color: rgb(0, 81, 255);
+        /* text-align: center; */
+
+    }
+
+    @media (min-width:200px) and (max-width:500px) {
+
+        .new {
+
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #int:last-child {
+            flex-direction: row;
+        }
+
+        input {
+            width: 80%;
+            margin-left: 50px;
+            height: 26px;
+
+        }
+
+        label {
+            font-size: 20px;
+            text-align: start;
+            text-align: center;
+            width: 100%;
+        }
+
+        .chance {
+            opacity: 0.5;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            height: 40px;
+            font-size: medium;
+            font-weight: bold;
+
+        }
+
+
+
+    }
+</style>
+
+<body>
+    <h1> APPILICATION</h1>
+    <div>
+        <form action="#" method="get" id="form">
+            <!-- <span style="color: blue;" id="success">success</span> -->
+            <span id="success"></span>
+
+            <span id="name_error" style="color: red;"></span>
+
+            <div class="new">
+
+                <label for="name">NAME</label>
+                <input type="text" name="name" id="name" oninput="upper()" title="your name">
+            </div>
+
+            <span id="email_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" title="your email id">
+            </div>
+            <span id="no_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="no">MOBLIE </label>
+                <input type="text" id="no" name="number" oninput="moblie_validation()" title="your number">
+            </div>
+            <span id="pass_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="add">PASSWORD</label>
+                <input type="password" id="pass" name="password" title="PASSWORD">
+            </div>
+            <span id="word_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="add">CONFORM PASSWORD</label>
+                <input type="password" id="word" title=" CONFORM PASSWORD">
+            </div>
+            <span id="add_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="add">ADDRESS</label>
+                <input type="address" id="add" title="your address">
+            </div>
+
+            <div class="new">
+                <label for="res">UPLOAD FILE<br>(optional)</label>
+                <input type="file" id="res" title="your file">
+            </div>
+
+            <span id="gen_error" style="color: red;"></span>
+
+            <div class="new">
+                <label for="gen">GENDER</label>
+                <select id="gen">
+                    <option value="m"></option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="others">others</option>
+                </select>
+            </div>
+
+            <div class="new" id="int">
+                <input type="reset" id="reset" title="reset">
+
+                <input type="submit" id="submit" title="submit"  onclick="validation()">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function moblie_validation(){
+            let no_input=document.getElementById("no");
+            const new_input =/^[0-9]{10}$/;
+            if (no_input.value == "") {
+                no_error.innerText = "Please Enter your number *";
+                // alert("Please Enter your no");
+                error_flag = false;
+            }
+            else if(no_input.value.length !=10){
+                no_error.innerText = "Enter the 10 digit*";  
+                no_input.style.borderWidth="1px";
+                no_input.style.borderColor="red";
+                no_input.style.outline="none";
+            }
+           else if(!new_input.test(no_input.value)){
+            no_error.innerText = "wrong*";
+
+           }
+            else {
+                no_error.innerText = "";
+                  
+                no_input.style.borderWidth="5px";
+                no_input.style.borderColor="green";
+                no_input.style.outline="none";
+            }
+        }
+        function upper(){
+            let name_element=document.getElementById("name");
+            // alert(name_element.value.toUpperCase());
+            name_element.value=name_element.value.toUpperCase();
+            
+        }
+        function validation() {
+           
+            var name_input = document.getElementById("name");
+            var email_input = document.getElementById("email");
+            var no_input = document.getElementById("no");
+            var pass_input = document.getElementById("pass");
+            var add_input = document.getElementById("add");
+            const new_input =/^[0-9]{10}$/;
+            var name_error = document.getElementById("name_error");
+            var email_error = document.getElementById("email_error");
+            var no_error = document.getElementById("no_error");
+            var pass_error = document.getElementById("pass_error");
+            var add_error = document.getElementById("add_error");
+
+
+            event.preventDefault();
+
+            var error_flag = true;
+
+            if (name_input.value == "") {
+                name_error.innerText = "Please Enter your name*";
+                // alert("Please Enter your name");
+                error_flag = false;
+            }
+            else {
+                name_error.innerText = "";
+            }
+
+            if (email_input.value == "") {
+                email_error.innerText = "Please Enter your mail*";
+                error_flag = false;
+                // alert("Please Enter your email");
+
+            }
+            else {
+                email_error.innerText = "";
+            }
+
+             moblie_validation();
+
+            if (pass_input.value == "") {
+                pass_error.innerText = "Please Enter your password*";
+                // alert("Please Enter your password");
+                error_flag = false;
+            }
+            else {
+                pass_error.innerText = "";
+                var word_input = document.getElementById("word");
+                if (pass_input.value != word_input.value) {
+                    var word_error = document.getElementById("word_error");
+                    word_error.innerText = "Invalid Password*";
+                    alert("Invalid Password");
+                    error_flag = false;
+                } else {
+                    var word_error = document.getElementById("word_error");
+                    word_error.innerText = "";
+                }
+            }
+
+            if (add_input.value == "") {
+                add_error.innerText = "Please Enter your address *";
+                // alert("Please Enter your adddres");
+                error_flag = false;
+            }
+            else {
+                add_error.innerText = "";
+            }
+
+            var success = document.getElementById("success");
+            if (error_flag) {
+                success.innerText = "SUBMITTED SUCCESSFULLY";
+                let form = document.getElementById("form");
+                form.submit();
+            } else {
+                success.innerText = "";
+            }
+
+            
+        }
+
+    </script>
+
+
+</body>
+
+</html>
