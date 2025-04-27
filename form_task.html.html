@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>job Applicatiion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        legend {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #form {
+            border: 3px solid black;
+
+            width: 400px;
+            padding: 30px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgba(242, 237, 237, 0.279);
+            box-shadow: 1px 1px 10px rgb(10, 10, 34);
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 30px;
+            border: 2px solid rgb(3, 3, 10);
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 130px;
+            height: 30px;
+            font-weight: bolder;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: azure;
+            background: #051725e9;
+            /* background-color: rgb(232, 233, 241); */
+        }
+
+        div {
+            margin-top: 20px;
+        }
+
+        #button {
+            display: flex;
+            justify-content: space-between;
+            /* gap:50px; */
+
+        }
+
+        .new_div {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        span {
+            color: red;
+        }
+
+        #add_btn {
+            border: 2px solid;
+            width: 50px;
+            border-radius: 7px;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <h1>JOB APPLICATION</h1>
+    <hr>
+    <form action="#" mathod="post" id="form">
+
+        <legend>YOUR DETAILS</legend>
+        <h4 id="success"></h4>
+        <!-------NAME INPUT-------->
+        <div class="container">
+            <label for="name_input">FULL NAME</label><span id="name_error"></span>
+            <input type="text" id="name_input" name="name" placeholder="Enter your Name" oninput="upper_validation()">
+        </div>
+        <!-------EMAIL INPUT-------->
+        <div class="container">
+            <label for="email_input">EMAIL</label><span id="email_error"></span>
+            <input type="email" id="email_input" name="email" placeholder="Enter your Email">
+        </div>
+        <!-------PASSWORD INPUT-------->
+        <div class="container">
+            <label for="password_input">CREATE NEW PASSWORD</label><span id="password_error"></span>
+            <input type="password" id="password_input" name="new password" placeholder="Enter your Password"
+                title="Include numbers,symbols,upper&lower char">
+        </div>
+        <!-------CONFIRM PASSWORD INPUT-------->
+        <div class="container">
+            <label for="confirm_password_input">CONFIRM PASSWORD</label><span id="confirm_password_error"></span>
+            <input type="password" id="confirm_password_input" name="confirm password"
+                placeholder="Enter your Comfirm Password">
+
+        </div>
+        <!-------MOBILE INPUT-------->
+        <div class="container">
+            <label for="mobile_input">MOBILE</label><span id="mobile_error"></span>
+            <input type="text" id="mobile_input" name="number" placeholder="Enter your Number"
+                oninput="mobile_validation()">
+        </div>
+        <!-------GENDER SELECT INPUT-------->
+        <div class="container">
+            <label for="gender_input">GENDER</label><span id="gender_error"></span>
+            <select id="gender_input" name="gender">
+                <option></option>
+                <option>MALE</option>
+                <option>FEMALE</option>
+                <option>OTHERS</option>
+            </select>
+        </div>
+        <!-------DATE OF BIRTH INPUT-------->
+        <div class="container">
+            <label for="dob_input">DATE OF BIRTH</label><span id="dob_error"></span>
+            <input type="date" id="dob_input" name="dob">
+        </div>
+        <!-- -----ADDRESS INPUT------ -->
+        <div class="container">
+            <label for="address_input">ADDRESS</label><span id="address_error"></span>
+            <input type="text" id="address_input" name="address" placeholder="Enter your Address">
+        </div>
+        <!-------INSTITUDE NAME INPUT-------->
+        <div class="container">
+            <label for="institude_input">INSTITUDE NAME</label><span id="institude_error"></span>
+            <input type="text" id="institude_input" name="Institude_name" placeholder="Enter your Institude Name">
+        </div>
+        <!-------DEGREE INPUT-------->
+        <div class="container">
+            <label for="degree_input">DEGREE</label><span id="degree_error"></span>
+            <select id="degree_input" name="degree">
+                <option></option>
+                <option>BE</option>
+                <option>BCOM</option>
+                <option>BSE</option>
+                <option>B.Tech</option>
+                <option>MCA</option>
+                <option>OTHERS</option>
+            </select>
+        </div>
+        <!-------JOB POSITION INPUT-------->
+        <div class="container">
+            <label for="job_position_input">JOB POSITION</label><span id="job_position_error"></span>
+            <select id="job_position_input" name="job_position">
+                <option></option>
+                <option>WEB DEVELOPER</option>
+                <option>CYBER SECURITY</option>
+                <option>IOT ENGINEER</option>
+                <option>3D ANIMATON</option>
+                <option>DATA ANAYZED</option>
+            </select>
+        </div>
+        <!-------SKILLS INPUT-------->
+        <div class="container">
+            <label for="skills_input">SKILLS</label><span id="skills_error"></span>
+            <input type="text" id="skills_input" name="skills" placeholder="Enter your skills">
+            <div id="new_skills">
+                <!-------HERE ADDED NEW SKILLS INPUT-------->
+            </div>
+            <button onclick="add(event)" id="add_btn">ADD</button>
+        </div>
+        <!-------RESUME INPUT-------->
+        <div class="container">
+            <label for="resume_input">UPLOAD RESUME(PDF/JPG)</label><span id="resume_error"></span>
+            <input type="file" id="resume_input" name="resume">
+        </div>
+        <!----------submit & reset----------->
+        <div class="container" id="button">
+            <input type="reset" id="reset" title="RESET">
+            <input type="submit" id="submit" title="SUBMIT" onclick="validation(event)">
+        </div>
+    </form>
+    <br>
+    <center>
+        <table id="table" border="3px" cellpadding="10" cellspacing="0">
+            <tr>
+                <th>s.no</th>
+                <th>email</th>
+                <th>password</th>
+                <th>mobile</th>
+                <th>gender</th>
+                <th>dob</th>
+                <th>address</th>
+                <th>Institude</th>
+                <th>degree</th>
+                <th>job position</th>
+                <th>skills</th>
+                <th>resume</th>
+    
+            </tr>
+        </table>
+    </center>
+    
+    <script>
+        // // // function for mobile validation // // //
+        function mobile_validation() {
+            let mobile_input = document.getElementById("mobile_input");
+            let mobile_error = document.getElementById("mobile_error");
+            const mobile_pattern = /^[0-9]{10}$/;
+            if (mobile_input.value == "") {
+                mobile_error.innerText = "please enter your number *";
+                // alert("Please Enter your no");
+                data = false;
+            }
+            else if (mobile_input.value.length != 10) {
+
+                mobile_input.style.borderWidth = "2px";
+                mobile_input.style.borderColor = "red";
+                mobile_input.style.outline = "none";
+                data = false;
+            }
+            if (!mobile_pattern.test(mobile_input.value)) {
+                mobile_error.innerText = "Please enter a valid 10-digit number*";
+                data = false;
+            }
+            else {
+                mobile_error.innerText = "";
+
+                mobile_input.style.borderWidth = "3px";
+                mobile_input.style.borderColor = "green";
+                mobile_input.style.outline = "none";
+                data = true;
+            }
+
+        }
+
+        // // // function for name upper validation// // //
+        function upper_validation() {
+            let name_element = document.getElementById("name_input");
+            // alert(name_element.value.toUpperCase());
+            name_element.value = name_element.value.toUpperCase();
+        }
+        // // // function for add & remove in skills// // //
+        function add(event) {
+            event.preventDefault();
+
+            var new_skill = document.getElementById("new_skills");
+
+            // Create a  div for join add & remove
+            var new_div=document.createElement("div")
+            new_div.style.marginTop = "10px";
+            new_div.className = 'new_div';
+
+            // Create input
+            var input_new = document.createElement("input");
+            input_new.type = "text";
+            input_new.placeholder = "Enter your skills";
+            input_new.style.marginRight = "10px";
+
+            // Create remove button
+            var remove_value = document.createElement("button");
+            remove_value.type = "button";
+            remove_value.textContent = "REMOVE";
+            remove_value.style.border = "none";
+            remove_value.style.border = "3px solid red";
+            remove_value.style.borderRadius = "10px";
+            remove_value.style.height = "34px";
+            remove_value.style.width = "100px";
+            // function for remove button
+            remove_value.onclick = function () {
+                new_skill.removeChild(new_div);
+            }
+
+            // Append input and button to the div
+            new_div.appendChild(input_new);
+            new_div.appendChild(remove_value);
+
+            // Append the new div to the skill
+            new_skill.appendChild(new_div);
+        }
+        // // // function for form error// // //
+        //var count=1;
+        function change_color(feildname, color, pixel) {
+            feildname.style.borderColor = color;
+            feildname.style.outline = "none";
+            feildname.style.borderWidth = pixel;
+        }
+        function validation() {
+            event.preventDefault();
+            let name_input = document.getElementById("name_input");
+            let email_input = document.getElementById("email_input");
+            let password_input = document.getElementById("password_input");
+            let confirm_password_input = document.getElementById("confirm_password_input");
+            let mobile_input = document.getElementById("mobile_input");
+            let gender_input = document.getElementById("gender_input");
+            let dob_input = document.getElementById("dob_input");
+            let address_input = document.getElementById("address_input");
+            let institude_input = document.getElementById("institude_input");
+            let degree_input = document.getElementById("degree_input");
+            let job_position_input = document.getElementById("job_position_input");
+            let skills_input = document.getElementById("skills_input");
+            let resume_input = document.getElementById("resume_input");
+            const mobile_pattern = /^[0-9]{10}$/;
+            var data = true;
+            // Name section for error
+            let name_error = document.getElementById("name_error")
+            if (name_input.value == "") {
+                name_error.innerText = "*";
+                // name_input.style.border="none";
+                // name_input.style.border="2px solid red"; 
+                change_color(name_input, "green", "2px")
+                data = false;
+
+            } else {
+                name_error.innerText = "";
+                name_input.style.border = "2px solid black";
+            }
+            // Email section for error
+            let email_error = document.getElementById("email_error")
+            if (email_input.value == "") {
+                email_error.innerText = "*";
+                email_input.style.border = "none";
+                email_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                email_error.innerText = "";
+                email_input.style.border = "2px solid black";
+            }
+            // Password section for error
+            let password_error = document.getElementById("password_error")
+            if (password_input.value == "") {
+                password_error.innerText = "*";
+                password_input.style.border = "none";
+                password_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                password_error.innerText = "";
+                password_input.style.border = "2px solid black";
+            }
+            //  confirm section for error
+            let confirm_password_error = document.getElementById("confirm_password_error")
+            if (confirm_password_input.value == "") {
+                confirm_password_error.innerText = "*";
+                confirm_password_input.style.border = "none";
+                confirm_password_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                confirm_password_error.innerText = "";
+                confirm_password_input.style.border = "2px solid black";
+                if (confirm_password_input.value != password_input.value) {
+                    confirm_password_error.innerText = "Invalid password";
+                    confirm_password_input.style.border = "none";
+                    confirm_password_input.style.border = "2px solid red";
+                    data = false;
+                }
+                else {
+                    confirm_password_error.innerText = "";
+                    confirm_password_input.style.border = "2px solid black";
+                }
+            }
+            // mobile section for error
+            let mobile_error = document.getElementById("mobile_error")
+            if (mobile_input.value == "") {
+                mobile_error.innerText = "*";
+                mobile_input.style.border = "none";
+                mobile_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                mobile_error.innerText = "";
+                mobile_input.style.border = "2px solid black";
+                if (mobile_input.value.length != 10) {
+
+                    mobile_input.style.borderWidth = "2px";
+                    mobile_input.style.borderColor = "red";
+                    mobile_input.style.outline = "none";
+                    data = false;
+                }
+                if (!mobile_pattern.test(mobile_input.value)) {
+                    mobile_error.innerText = "Please enter a valid 10-digit number*";
+                    data = false;
+                }
+                else {
+                    mobile_error.innerText = "";
+
+                    mobile_input.style.borderWidth = "3px";
+                    mobile_input.style.borderColor = "green";
+                    mobile_input.style.outline = "none";
+                    data = true;
+                }
+
+            }
+            // gender section for error
+            let gender_error = document.getElementById("gender_error")
+            if (gender_input.value == "") {
+                gender_error.innerText = "*";
+                gender_input.style.border = "none";
+                gender_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                gender_error.innerText = "";
+                gender_input.style.border = "2px solid black";
+            }
+            // dob section for error
+            let dob_error = document.getElementById("dob_error")
+            if (dob_input.value == "") {
+                dob_error.innerText = "*";
+                dob_input.style.border = "none";
+                dob_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                dob_error.innerText = "";
+                dob_input.style.border = "2px solid black";
+            }
+            // address section for error
+            let address_error = document.getElementById("address_error")
+            if (address_input.value == "") {
+                address_error.innerText = "*";
+                address_input.style.border = "none";
+                address_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                address_error.innerText = "";
+                address_input.style.border = "2px solid black";
+            }
+            // Institude section for error
+            let institude_error = document.getElementById("institude_error")
+            if (institude_input.value == "") {
+                institude_error.innerText = "*";
+                institude_input.style.border = "none";
+                institude_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                institude_error.innerText = "";
+                institude_input.style.border = "2px solid black";
+            }
+            // Degree section for error
+            let degree_error = document.getElementById("degree_error")
+            if (degree_input.value == "") {
+                degree_error.innerText = "*";
+                degree_input.style.border = "none";
+                degree_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                degree_error.innerText = "";
+                degree_input.style.border = "2px solid black";
+            }
+            // Job position section for error
+            let job_position_error = document.getElementById("job_position_error")
+            if (job_position_input.value == "") {
+                job_position_error.innerText = "*";
+                job_position_input.style.border = "none";
+                job_position_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                job_position_error.innerText = "";
+                job_position_input.style.border = "2px solid black";
+            }
+            // skills section for error
+            let skills_error = document.getElementById("skills_error")
+            if (skills_input.value == "") {
+                skills_error.innerText = "*";
+                skills_input.style.border = "none";
+                skills_input.style.border = "2px solid red";
+                data = false;
+
+            } else {
+                skills_error.innerText = "";
+                skills_input.style.border = "2px solid black";
+            }
+            // Resume section for error
+            // let resume_error=document.getElementById("resume_error");
+            // if (resume_input.files.length==0) {
+            //     resume_error.innerText="*";
+            //     resume_input.style.border="none";
+            //     resume_input.style.border="2px solid red";
+            //     data = false;
+            // } else {
+            //     resume_error.innerText="";
+            //     resume_input.style.border="2px solid black";
+            // }
+            // submit success section
+            let success_tag = document.getElementById("success");
+            if (data) {
+                success_tag.innerText = "SUBMITTED  SUCCESSFULLY";
+                success_tag.style.textAlign = "center";
+                success_tag.style.color = "BLUE";
+                success_tag.style.marginTop = "10px";
+
+                let table = document.getElementById("table");
+                let rowCount = table.rows.length;
+
+                let row = table.insertRow();
+
+
+                var td = row.insertCell();
+                td.textContent = rowCount;
+
+                var td = row.insertCell();
+                td.textContent = name_input.value;
+
+                var td = row.insertCell();
+                td.textContent = password_input.value;
+
+                var td = row.insertCell();
+                td.textContent = mobile_input.value;
+
+                var td = row.insertCell();
+                td.textContent = gender_input.value;
+
+                var td = row.insertCell();
+                td.textContent = dob_input.value;
+
+                var td = row.insertCell();
+                td.textContent = address_input.value;
+
+                var td = row.insertCell();
+                td.textContent = institude_input.value;
+
+                var td = row.insertCell();
+                td.textContent = degree_input.value;
+
+                var td = row.insertCell();
+                td.textContent = job_position_input.value;
+
+                var td = row.insertCell();
+                td.textContent = skills_input.value;
+
+                var td = row.insertCell();
+                td.textContent = resume_input.value;
+
+
+                // count++;
+            } else {
+                success_tag.innerText = "Please Enter all the Required *";
+                // success_tag.style.textAlign="none";
+                success_tag.style.color = "red";
+                success_tag.style.marginTop = "10px";
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
